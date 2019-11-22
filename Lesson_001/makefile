@@ -8,14 +8,17 @@ INT_DIR = bin-int
 CC = g++
 # Compiler flags
 CFLAGS = -g -Wall
+# Sources
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 # Object files the compiler should expect
-OBJS = $(INT_DIR)/*.o
+object_files := $(subst $(SRC_DIR),$(INT_DIR),$(SRCS))
+OBJS := $(subst .cpp,.o,$(object_files))
 
-app: mkdir main.o
+app : mkdir $(OBJS)
 	$(CC) $(CFLAGS) -o $(BIN_DIR)/app $(OBJS)
 
-main.o : $(SRC_DIR)/main.cpp
-	$(CC) $(CFLAGS) -c -o $(INT_DIR)/main.o $(SRC_DIR)/main.cpp
+$(INT_DIR)/%.o : $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Create all necessary directories if no exist
 mkdir : mkdir_bin mkdir_bin_int
@@ -38,3 +41,7 @@ clean_bin :
 # Clean up intermediates
 clean_int :
 	rm -rf $(INT_DIR)
+
+# Sanity Checks
+print :
+	echo $(OBJS)
