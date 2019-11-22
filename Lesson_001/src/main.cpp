@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
         args.push_back(argv[i]);
     }
 
-    for (int i = 0; i < args.size(); i++) {
-        std::cout << (args[i]) << "\n";
+    for (long long unsigned int i = 0; i < args.size(); i++) {
+        std::cout << args[i] << "\n";
     }
 
     std::cout << "Int is a " << typeBitSize(sizeof(int)) << "bit data type.\n";
