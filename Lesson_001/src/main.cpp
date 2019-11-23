@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "bit-size.hpp"
+#include "strings.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -23,5 +24,8 @@ int main(int argc, char* argv[])
   std::cout << "Double is a " << typeBitSize(sizeof(double)) << "bit data type.\n";
   std::cout << "Char is a " << typeBitSize(sizeof(char)) << "bit data type.\n";
   std::cout << "Bool is a " << typeBitSize(sizeof(bool)) << "bit data type.\n";
+
+  std::cout << printName("Nicola", "Greco", "Sebastian") << "\n";
+  std::cout << nameLength("Nicola", "Greco", "Sebastian") << "\n";
   return 0;
 }

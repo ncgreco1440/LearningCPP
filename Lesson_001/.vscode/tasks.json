@@ -3,24 +3,17 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "${env:MINGW_HOME}\\bin\\g++.exe",
+            "label": "make",
+            "command": "bash",
             "args": [
-                "-g",
-                "${workspaceFolder}\\src\\main.cpp",
-                "-o",
-                "${workspaceFolder}\\bin\\app.exe"
+                "-c",
+                "make"
             ],
-            "options": {
-                "cwd": "${env:MINGW_HOME}\\bin"
-            },
+            "options": {},
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         }
     ]
 }
