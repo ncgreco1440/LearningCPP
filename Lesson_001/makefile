@@ -7,7 +7,7 @@ INT_DIR = bin-int
 # Compiler to use
 CC = g++
 # Compiler flags
-CFLAGS = -g -Wall -I headers
+CFLAGS = -g -Wall -O0 -I headers
 # Sources
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 # Object files the compiler should expect
