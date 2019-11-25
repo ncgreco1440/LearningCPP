@@ -13,12 +13,18 @@ SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 # Object files the compiler should expect
 object_files := $(subst $(SRC_DIR),$(INT_DIR),$(SRCS))
 OBJS := $(subst .cpp,.o,$(object_files))
+OBJS_ASM := $(subst .cpp,.s,$(object_files))
 
 app : mkdir $(OBJS)
 	$(CC) $(CFLAGS) -o $(BIN_DIR)/app $(OBJS)
 
+asm : mkdir $(OBJS_ASM)
+
 $(INT_DIR)/%.o : $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(INT_DIR)/%.s : $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -S $< -o $@
 
 # Create all necessary directories if no exist
 mkdir : mkdir_bin mkdir_bin_int
