@@ -20,6 +20,9 @@ class Account {
     inline int GetBalance() {
       return this->balance;
     }
+    inline bool EvenBalance() {
+      return true;
+    }
     /**
      * Deposits money into the account
      * @param amt - amount to deposit

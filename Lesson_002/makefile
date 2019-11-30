@@ -7,7 +7,7 @@ INT_DIR = bin-int
 # Compiler to use
 CC = g++
 # Compiler flags
-CFLAGS = -g -Wall -O0 -I headers
+CFLAGS = -g -Wall -O0 -I headers -MD
 # Sources
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 # Object files the compiler should expect
@@ -51,3 +51,5 @@ clean_int :
 # Sanity Checks
 print :
 	echo $(OBJS)
+
+-include $(OBJS:.o=.d)
