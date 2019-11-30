@@ -6,8 +6,32 @@ BIN_DIR = bin
 INT_DIR = bin-int
 # Compiler to use
 CC = g++
+# C++ specification to use. \
+Developer's Note: Honestly there is no reason to not use c++17
+CPP_SPECIFICATION = c++17
+cpp_spec_opt = -std=$(CPP_SPECIFICATION)
+# Include files
+INCLUDES = -I headers -I include
+inc_file_opt = $(INCLUDES)
+# Optimizations \
+O0 = no optimization \
+O1 = some optimzation \
+O2 = moar optimization \
+O3 = even moar optimization
+OPTIMIZATION = O0
+optimization_opt = -$(OPTIMIZATION)
+# Warnings \
+This option will only support 1 argument \
+Best bet is just use Wall to enable all warnings
+WARNINGS = Wall
+warn_opt = -$(WARNINGS)
+# Concat User Options
+user_opts = 	$(warn_opt) \
+							$(optimization_opt) \
+							$(inc_file_opt) \
+							$(cpp_spec_opt)
 # Compiler flags
-CFLAGS = -g -Wall -O0 -I headers
+CFLAGS = -g $(user_opts)
 # Sources
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 # Object files the compiler should expect

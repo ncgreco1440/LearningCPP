@@ -9,11 +9,16 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}\\bin\\app.exe",
-            "args": [],
+            "args": [
+                "-p",
+                "Nico",
+                "Greco",
+                "45"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "${env:MINGW_HOME}\\bin\\gdb.exe",
             "setupCommands": [
