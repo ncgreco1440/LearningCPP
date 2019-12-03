@@ -5,6 +5,7 @@
 #include "functions.hpp"
 #include "accum.hpp"
 #include "resource.hpp"
+#include "person.hpp"
 
 std::vector<std::string> args;
 
@@ -26,15 +27,26 @@ int main(int argc, char* argv[]) {
 
   if (args.size()) {
     // Run some logic around Person/Resource
+    LCPP::SmartPerson Bobby;
+
     {
       LCPP::Resource localResource{"local"};
+
+      LCPP::SmartPerson Nico{"Nico", "Greco"};
+      Nico.AddResource();
+      Bobby = Nico;
     }
 
-    LCPP::Resource* pResource = new LCPP::Resource{"created with new"};
-    std::string newString = pResource->GetName();
-    delete pResource;
+    Bobby.AddResource();
 
-    std::string string3 = pResource->GetName();
+    // LCPP::Resource* pResource = new LCPP::Resource{"created with new"};
+    // std::string newString = pResource->GetName();
+
+    // // manually delete the resource
+    // delete pResource;
+
+    // // Yikes
+    // std::string string3 = pResource->GetName();
 
   } else {
     // Run some logic around templates
