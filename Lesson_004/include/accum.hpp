@@ -12,7 +12,7 @@ namespace LCPP {
       T operator+=(T const& inc) {
         return total += inc;
       }
-      
+
       T GetTotal() const {
         return this->total;
       }
