@@ -47,6 +47,10 @@ std::string getName(LCPP::Person const& p) {
 }
 
 int main(int argc, char const* argv[]) {
+#ifdef Windows
+  std::cout << "This program is running on windows" << std::endl;
+#endif
+
   /**
    * Use the range initializer,
    * this saves you the time of having to write a for loop

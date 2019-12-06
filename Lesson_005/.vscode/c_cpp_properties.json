@@ -14,7 +14,7 @@
             "windowsSdkVersion": "10.0.18362.0",
             "compilerPath": "${env:MINGW_HOME}/bin/g++.exe",
             "cStandard": "c11",
-            "cppStandard": "c++11",
+            "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64"
         }
     ],
