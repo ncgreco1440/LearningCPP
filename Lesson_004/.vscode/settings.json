@@ -45,5 +45,6 @@
         "typeinfo": "cpp",
         "filesystem": "cpp"
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true
 }

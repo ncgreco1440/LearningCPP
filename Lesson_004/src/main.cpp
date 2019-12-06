@@ -2,10 +2,10 @@
 #include <string>
 #include <vector>
 
-#include "functions.hpp"
 #include "accum.hpp"
-#include "resource.hpp"
+#include "functions.hpp"
 #include "person.hpp"
+#include "resource.hpp"
 
 std::vector<std::string> args;
 

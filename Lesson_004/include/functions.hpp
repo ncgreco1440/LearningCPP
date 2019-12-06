@@ -11,8 +11,6 @@ namespace LCPP {
     return t1 > t2 ? t1 : t2;
   }
 
-}
-
-
+} // namespace LCPP
 
 #endif // FUNCTIONS_HEADER_

@@ -5,19 +5,20 @@
 
 namespace LCPP {
 
-  template <class T>
+  template<class T>
   class Accum {
     public:
-      explicit Accum(T start): total(start) {};
-      T operator+=(T const& inc) {
-        return total += inc;
-      }
+    explicit Accum(T start): total(start){};
+    T operator+=(T const& inc) {
+      return total += inc;
+    }
 
-      T GetTotal() const {
-        return this->total;
-      }
+    T GetTotal() const {
+      return this->total;
+    }
+
     private:
-      T total;
+    T total;
   };
 
   /**
@@ -25,20 +26,21 @@ namespace LCPP {
    * Let's assume that when concat strings we actually just want to accumulate
    * the amount of characters.
    */
-  template <>
+  template<>
   class Accum<std::string> {
     public:
-      explicit Accum(std::string start): total(start.length()) {};
-      int operator+=(std::string const& inc) {
-        return total += inc.length();
-      }
-      int GetTotal() const {
-        return this->total;
-      }
+    explicit Accum(std::string start): total(start.length()){};
+    int operator+=(std::string const& inc) {
+      return total += inc.length();
+    }
+    int GetTotal() const {
+      return this->total;
+    }
+
     private:
-      int total;
+    int total;
   };
 
-}
+} // namespace LCPP
 
 #endif // ACCUM_HEADER_

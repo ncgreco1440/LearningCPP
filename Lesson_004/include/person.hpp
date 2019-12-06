@@ -12,39 +12,40 @@ namespace LCPP {
   // Hard implementation of Person with dynamic memory allocation
   class Person {
     public:
-      Person(): firstName(""), lastName("") {}
-      Person(std::string const first, std::string const last):
-        firstName(first), lastName(last) {}
-      // If you write a destructor, you MUST write a copy constructor
-      ~Person();
-      // Here is a copy constructor
-      Person(Person const& p);
-      // Copy assignment
-      Person& operator=(const Person& p);
-      std::string GetName() const {
-        return this->firstName + " " + this->lastName;
-      }
-      void AddResource();
+    Person(): firstName(""), lastName("") {}
+    Person(std::string const first, std::string const last): firstName(first), lastName(last) {}
+    // If you write a destructor, you MUST write a copy constructor
+    ~Person();
+    // Here is a copy constructor
+    Person(Person const& p);
+    // Copy assignment
+    Person& operator=(const Person& p);
+    std::string GetName() const {
+      return this->firstName + " " + this->lastName;
+    }
+    void AddResource();
+
     private:
-      std::string firstName;
-      std::string lastName;
-      Resource* pResource;
+    std::string firstName;
+    std::string lastName;
+    Resource* pResource;
   };
 
   class SmartPerson {
     public:
-      SmartPerson(): firstName(""), lastName("") {}
-      SmartPerson(std::string const first, std::string const last):
-        firstName(first), lastName(last) {}
-      // no destructor necessary
-      std::string GetName() const {
-        return this->firstName + " " + this->lastName;
-      }
-      void AddResource();
+    SmartPerson(): firstName(""), lastName("") {}
+    SmartPerson(std::string const first, std::string const last)
+        : firstName(first), lastName(last) {}
+    // no destructor necessary
+    std::string GetName() const {
+      return this->firstName + " " + this->lastName;
+    }
+    void AddResource();
+
     private:
-      std::string firstName;
-      std::string lastName;
-      std::shared_ptr<Resource> pResource;
+    std::string firstName;
+    std::string lastName;
+    std::shared_ptr<Resource> pResource;
   };
 
   /**
@@ -68,6 +69,6 @@ namespace LCPP {
    *
    */
 
-}
+} // namespace LCPP
 
 #endif // PERSON_H_

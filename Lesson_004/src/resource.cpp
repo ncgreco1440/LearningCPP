@@ -2,7 +2,7 @@
 
 #include "resource.hpp"
 
-LCPP::Resource::Resource(std::string n): name(n) {
+LCPP::Resource::Resource(std::string n) : name(n) {
   std::cout << "constructing " << name << std::endl;
 }
 
