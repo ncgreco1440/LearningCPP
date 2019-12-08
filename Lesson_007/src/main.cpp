@@ -81,6 +81,19 @@ class IntArray {
     return os;
   }
 
+  IntArray& operator=(const IntArray& rhs) {
+    if (this != &rhs) {
+      m_ptr.reset();
+      m_ptr  = std::make_unique<int[]>(rhs.size());
+      m_size = rhs.size();
+      for (unsigned int i = 0; i < this->size(); i++) {
+        this->m_ptr[i] = rhs[i];
+      }
+    }
+
+    return *this;
+  }
+
   private:
   std::unique_ptr<int[]> m_ptr;
   unsigned int m_size;
@@ -115,6 +128,10 @@ int main() {
   }
 
   std::cout << "b = " << b << "\n";
+
+  a = b;
+
+  std::cout << "a = " << a << "\n";
 
   char y;
   std::cin >> y;
