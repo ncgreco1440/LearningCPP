@@ -3,8 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${env:MINGW_HOME}/include"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",

@@ -11,7 +11,7 @@ Developer's Note: Honestly there is no reason to not use c++17
 CPP_SPECIFICATION = c++17
 cpp_spec_opt = -std=$(CPP_SPECIFICATION)
 # Include files
-INCLUDES = -I headers -I include -I ${MINGW_HOME}/include
+INCLUDES = -I headers -I include
 inc_file_opt = $(INCLUDES)
 # Optimizations \
 O0 = no optimization \
