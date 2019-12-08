@@ -1,5 +1,3 @@
-.PHONY: platform
-.SILENT: platform
 # Source Directory, any *.cpp and *.h file should be located here
 SRC_DIR = src
 # Binary Directory
@@ -26,7 +24,7 @@ optimization_opt = -$(OPTIMIZATION)
 This option will only support 1 argument \
 Best bet is just use Wall to enable all warnings
 WARNINGS = Wall
-warn_opt = -$(WARNINGS)
+warn_opt = -$(WARNINGS) -Wextra
 # Concat User Options
 user_opts = 	$(warn_opt) \
 							$(optimization_opt) \
@@ -41,31 +39,8 @@ object_files := $(subst $(SRC_DIR),$(INT_DIR),$(SRCS))
 OBJS := $(subst .cpp,.o,$(object_files))
 OBJS_ASM := $(subst .cpp,.s,$(object_files))
 
-# EZ way to get the platform we are running on
-PLATFORM := $(shell node ../tools/os.js)
-WINDOWS = Windows
-LINUX = Linux
-MAC_OS = Darwin
-
-ifeq ($(WINDOWS), $(PLATFORM))
-	platform_defines := -D$(WINDOWS)
-endif
-
-ifeq ($(LINUX), $(PLATFORM))
-	platform_defines := -D$(LINUX)
-endif
-
-ifeq ($(MAC_OS), $(PLATFORM))
-	platform_defines := -D$(MAC_OS)
-endif
-
-CFLAGS += $(platform_defines)
-
-LDFLAGS = -L${MINGW_HOME}/lib
-libraries = -lglfw3 -lgdi32
-
 app : mkdir $(OBJS)
-	$(CC) $(LDFLAGS) -o $(BIN_DIR)/app $(OBJS)
+	$(CC) -o $(BIN_DIR)/app $(OBJS)
 
 asm : mkdir $(OBJS_ASM)
 
@@ -96,12 +71,5 @@ clean_bin :
 # Clean up intermediates
 clean_int :
 	rm -rf $(INT_DIR)
-
-# Sanity Checks
-print :
-	echo $(OBJS)
-
-platform :
-	echo $(PLATFORM)
 
 -include $(OBJS:.o=.d)

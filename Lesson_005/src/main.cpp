@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+#include <GLFW/glfw3.h>
+
 #include "person.hpp"
 #include "tweeter.hpp"
 
