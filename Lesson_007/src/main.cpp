@@ -15,27 +15,8 @@
 #include <memory>
 #include <string>
 
-namespace Exceptions {
-  const std::string ARRAY_INDEX_OUT_OF_BOUNDS{"Array index out of bounds."};
-}
-
-class IndexOutOfBoundsException: public std::exception {
-  public:
-  IndexOutOfBoundsException(const char* file, int line): std::exception(), file(file), line(line) {}
-  const char* what() const throw() {
-    return (Exceptions::ARRAY_INDEX_OUT_OF_BOUNDS + " in file " + this->file + " at line " +
-            std::to_string(this->line))
-        .c_str();
-  }
-
-  private:
-  std::string file;
-  int line;
-};
-#define THROW_EXCEPTION_INDEX_OUT_OF_BOUNDS()                                                      \
-  throw IndexOutOfBoundsException {                                                                \
-    __FILE__, __LINE__                                                                             \
-  }
+#include "array.hpp"
+#include "exception.hpp"
 
 class IntArray {
   public:
@@ -184,6 +165,16 @@ int main() {
   // argument
   IntArray d{std::move(a)};
   std::cout << "d = " << d << "\n";
+
+  // Custom array
+  Array<std::string> names{3};
+  names[0] = "Nico";
+  names[1] = "Andy";
+  names[2] = "Lisa";
+  std::cout << names << std::endl;
+  Array<std::string> moreNames{std::move(names)};
+  std::cout << names << std::endl;
+  std::cout << moreNames << std::endl;
 
   char y;
   std::cin >> y;
