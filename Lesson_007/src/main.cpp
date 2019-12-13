@@ -32,6 +32,10 @@ class IndexOutOfBoundsException: public std::exception {
   std::string file;
   int line;
 };
+#define THROW_EXCEPTION_INDEX_OUT_OF_BOUNDS()                                                      \
+  throw IndexOutOfBoundsException {                                                                \
+    __FILE__, __LINE__                                                                             \
+  }
 
 class IntArray {
   public:
@@ -55,7 +59,7 @@ class IntArray {
     if (index <= m_size - 1) {
       return m_ptr[index];
     } else {
-      throw IndexOutOfBoundsException{"", 1};
+      THROW_EXCEPTION_INDEX_OUT_OF_BOUNDS();
     }
   }
 
@@ -63,7 +67,7 @@ class IntArray {
     if (index <= m_size - 1) {
       return m_ptr[index];
     } else {
-      throw IndexOutOfBoundsException{"", 1};
+      THROW_EXCEPTION_INDEX_OUT_OF_BOUNDS();
     }
   }
 
@@ -81,15 +85,38 @@ class IntArray {
     return os;
   }
 
-  IntArray& operator=(const IntArray& rhs) {
-    if (this != &rhs) {
-      m_ptr.reset();
-      m_ptr  = std::make_unique<int[]>(rhs.size());
-      m_size = rhs.size();
-      for (unsigned int i = 0; i < this->size(); i++) {
-        this->m_ptr[i] = rhs[i];
-      }
-    }
+  /**
+   * Traditional overloaded assignment operator function
+   */
+  // IntArray& operator=(const IntArray& rhs) {
+  //   if (this != &rhs) {
+  //     m_ptr.reset();
+  //     m_ptr  = std::make_unique<int[]>(rhs.size());
+  //     m_size = rhs.size();
+  //     for (unsigned int i = 0; i < this->size(); i++) {
+  //       this->m_ptr[i] = rhs[i];
+  //     }
+  //   }
+
+  //   return *this;
+  // }
+
+  /**
+   * copy - swap idiom
+   */
+  friend void swap(IntArray& lhs, IntArray& rhs) noexcept {
+    using std::swap;
+    // Memberwise swap
+    swap(lhs.m_ptr, rhs.m_ptr);
+    swap(lhs.m_size, rhs.m_size);
+  }
+
+  /**
+   * Liberal overloaded assignment operator function
+   * leverages the copy - swap idiom
+   */
+  IntArray& operator=(IntArray rhs) {
+    swap(*this, rhs);
 
     return *this;
   }
@@ -129,8 +156,12 @@ int main() {
 
   std::cout << "b = " << b << "\n";
 
-  a = b;
+  a    = b;
+  a[1] = 5000;
+  b[2] = 5001;
 
+  std::cout << "a = " << a << "\n";
+  std::cout << "b = " << b << "\n";
   std::cout << "a = " << a << "\n";
 
   char y;
