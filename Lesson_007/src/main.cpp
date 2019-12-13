@@ -46,6 +46,20 @@ class IntArray {
       this->m_ptr[i] = rhs[i];
     }
   }
+  /**
+   * Move Constructor
+   * Useful for performance boosts as no deep copy memory allocation must occur
+   * You essentially just grab the address of data from source and make
+   * destination the new owner of that existing data.
+   */
+  IntArray(IntArray&& src) {
+    this->m_ptr.swap(src.m_ptr); // effectively the same thing as std::swap(m_ptr, src.m_ptr)
+    this->m_size = src.m_size;
+
+    // In case that the source was a real object, we should make sure it is cleaned up
+    src.m_ptr.reset();
+    src.m_size = 0;
+  }
 
   inline unsigned int size() const {
     return this->m_size;
@@ -103,12 +117,13 @@ class IntArray {
 
   /**
    * copy - swap idiom
+   * VS Code will report useage of this function as an error, but it will compile.
+   * @see [GitHub Ticket here](https://github.com/microsoft/vscode-cpptools/issues/4595)
    */
   friend void swap(IntArray& lhs, IntArray& rhs) noexcept {
-    using std::swap;
     // Memberwise swap
-    swap(lhs.m_ptr, rhs.m_ptr);
-    swap(lhs.m_size, rhs.m_size);
+    std::swap(lhs.m_ptr, rhs.m_ptr);
+    std::swap(lhs.m_size, rhs.m_size);
   }
 
   /**
@@ -116,7 +131,7 @@ class IntArray {
    * leverages the copy - swap idiom
    */
   IntArray& operator=(IntArray rhs) {
-    swap(*this, rhs);
+    swap(*this, rhs); // red squiggles may/will appear here, false positive this is legit code
 
     return *this;
   }
