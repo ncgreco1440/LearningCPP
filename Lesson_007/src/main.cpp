@@ -179,6 +179,12 @@ int main() {
   std::cout << "b = " << b << "\n";
   std::cout << "a = " << a << "\n";
 
+  // To use the move constructor, you can create a new instance just like you would the
+  // copy constructor, however you first call std::move and use it's result as an
+  // argument
+  IntArray d{std::move(a)};
+  std::cout << "d = " << d << "\n";
+
   char y;
   std::cin >> y;
   return 0;
