@@ -14,6 +14,19 @@
                 "$gcc"
             ],
             "group": "build"
+        },
+        {
+            "label": "msvc build",
+            "type": "shell",
+            "command": "cl.exe",
+            "args": [
+                "-EHsc",
+                "-Zi",
+                "-Fe:",
+                "app.exe",
+                "./src/main.cpp"
+            ],
+            "group": "build"
         }
     ]
 }
