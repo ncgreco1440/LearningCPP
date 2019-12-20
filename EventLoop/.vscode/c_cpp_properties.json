@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "GNU g++",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:MINGW_HOME}/include"
+            ],
+            "defines": [],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "${env:MINGW_HOME}/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "MSVC",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:VISUAL_STUDIO_HOME}/include"
+            ],
+            "defines": [],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "${env:VISUAL_STUDIO_BIN}/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}
