@@ -5,6 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "MSVC Debugger",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\_build\\EventLoop.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true
+        },
+        {
             "name": "g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
