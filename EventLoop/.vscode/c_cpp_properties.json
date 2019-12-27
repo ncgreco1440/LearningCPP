@@ -25,6 +25,24 @@
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "msvc-x64"
+        },
+        {
+            "name": "Clang++",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:CLANG_HOME}/lib/clang/9.0.0/include",
+                "${env:VISUAL_STUDIO_HOME}/include",
+                "{env:WINDOWS_SDK_LATEST_HOME}/winrt",
+                "{env:WINDOWS_SDK_LATEST_HOME}/um",
+                "{env:WINDOWS_SDK_LATEST_HOME}/shared",
+                "{env:WINDOWS_SDK_LATEST_HOME}/ucrt"
+            ],
+            "defines": [],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "${env:CLANG_HOME}/bin/clang++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
         }
     ],
     "version": 4

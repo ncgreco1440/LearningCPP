@@ -5,7 +5,7 @@ BIN_DIR = bin
 # Intermediate Directory, all *.o files go here
 INT_DIR = bin-int
 # Compiler to use
-CC = g++
+CC = clang++
 # C++ specification to use. \
 Developer's Note: Honestly there is no reason to not use c++17
 CPP_SPECIFICATION = c++17
